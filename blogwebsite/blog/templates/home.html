@@ -52,6 +52,7 @@
                 <hr><h4>: By {{post.author}}</h4><br>
                 <h5><a href="{% url 'articaldetails' post.pk %}">Show Page</a></h5>
                 <p>{{post.body}}</p>
+                <a href="{% url 'UpdateViewPost' post.pk %}"><button class="btn-primary">Edit</button></a>
             </div>
 
             {% endfor %}

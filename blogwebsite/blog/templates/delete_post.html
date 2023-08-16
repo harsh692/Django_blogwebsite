@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+
+{% block title %}
+Updating post
+{% endblock %}
+
+{% block content %}
+
+<h1>Delete Post</h1>
+<h4>Are you sure you want to delete article - {{post.title}} ?</h4>
+
+<div class="jumbotron">
+    <form method="POST">
+        {% csrf_token %}
+        <hr>
+        <button class="btn-danger">Yes</button>
+        
+    </form>
+    <a href="{% url 'home' %}"><button class="btn-primary">No</button></a>
+</div>
+
+{% endblock %}

@@ -10,6 +10,9 @@
     {{post.author.last_name}}<br/>
 </small>
 {{post.body}}
+<a href="{% url 'UpdateViewPost' post.pk %}"><button class="btn-primary">Edit</button></a>
+<br>
+<a href="{% url 'DeleteViewPost' post.pk %}"><button class="btn-danger">Delete</button></a>
 <br>
 <br>
 

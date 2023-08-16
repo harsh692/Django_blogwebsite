@@ -12,8 +12,9 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
     
     def get_absolute_url(self):
-        return reverse('articaldetails',args = (str(self.id)))
+        return reverse('home')
     ## this method is a necessary inbuilt method which needs to be defined when using createView.
+
     
 
 # Create your models here.

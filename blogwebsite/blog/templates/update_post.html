@@ -1,0 +1,20 @@
+{% extends "home.html" %}
+
+{% block title %}
+Updating post
+{% endblock %}
+
+{% block content %}
+
+<h1>Update Post</h1>
+
+<div class="jumbotron">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <hr>
+        <button class="btn-primary">Post</button>
+    </form>
+</div>
+
+{% endblock %}
