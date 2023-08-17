@@ -6,6 +6,8 @@ Updating post
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Update Post</h1>
 
 <div class="jumbotron">
@@ -16,5 +18,11 @@ Updating post
         <button class="btn-primary">Post</button>
     </form>
 </div>
+
+{% else %}
+<h1>You are not allowed here and you know it!</h1>
+{% endif %}
+
+{% block content %}
 
 {% endblock %}

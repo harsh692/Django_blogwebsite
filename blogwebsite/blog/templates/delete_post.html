@@ -6,6 +6,7 @@ Updating post
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <h1>Delete Post</h1>
 <h4>Are you sure you want to delete article - {{post.title}} ?</h4>
 
@@ -18,5 +19,12 @@ Updating post
     </form>
     <a href="{% url 'home' %}"><button class="btn-primary">No</button></a>
 </div>
+{% else %}
+<h1>You are not allowed and you know it.</h1>
+{% endif %}
+
+{% block content %}
+
+
 
 {% endblock %}

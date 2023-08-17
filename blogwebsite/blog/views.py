@@ -13,6 +13,11 @@ from django.urls import reverse_lazy
 class HomeView(ListView):
     model = Post
     template_name = 'home.html' 
+    # ordering =['-id']
+    # id is created automatically but we want it to be descending id list therefore ordering by -ve.
+    ordering = ['-post_date'] ## post_date is the field in model.
+    
+
 
 class ArticalDetailView(DetailView):
     model = Post

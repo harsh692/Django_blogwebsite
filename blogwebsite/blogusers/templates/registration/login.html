@@ -1,31 +1,21 @@
 {% extends 'home.html' %}
 
 {% block title %}
-Add Post
+Login
 {{post.title_tag}}
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-
-<h1>Create posts</h1>
+<h1>Login</h1>
 
 <div class="jumbotron">
     <form method="POST">
         {% csrf_token %}
         {{ form }}
         <hr>
-        <button class="btn-primary">Post</button>
+        <button class="btn-primary">Login</button>
     </form>
 </div>
-
-{% else %}
-<h1>You are not allowed here and you know it.</h1>
-{% endif %}
-
-{% block content %}
-
-
 
 {% endblock %}
 
