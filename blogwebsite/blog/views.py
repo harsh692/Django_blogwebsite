@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView ## class based views
 ## Using class views is helping us.
-from .models import Post
+from .models import Post, Category
 from .forms import ArticalPostForm, EditPostForm
 from django.urls import reverse_lazy
 
@@ -39,4 +39,9 @@ class Delete_View(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+class Category_View(CreateView):
+    model = Category
+    template_name = 'category.html'
+    fields = '__all__'
     
