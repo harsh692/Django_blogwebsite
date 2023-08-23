@@ -19,6 +19,13 @@ Add Post
     </form>
 </div>
 
+<script>
+    var name = "{{user.id}}";
+    document.getElementById("author_id").value=name;
+</script>
+
+<!-- javascript code to put the value in frontend directly since our form was getting executed from backend and there we cannot get user.id.  -->
+
 {% else %}
 <h1>You are not allowed here and you know it.</h1>
 {% endif %}

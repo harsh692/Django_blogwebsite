@@ -26,6 +26,29 @@
         <!-- Links -->
         <ul class="navbar-nav">
 
+          {% if cat_menu %}
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Categories
+            </a>
+            <div class="dropdown-menu">
+              {% for cat in cat_menu %}
+              <a class="dropdown-item" href="{% url 'categoryTwo' cat %}">{{cat}}</a>
+              {%endfor%}
+              
+            </div>
+          </li>
+
+          {%else%}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'categoryPage' %}">Categories</a>
+          </li>
+
+          {%endif%}
+
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -46,6 +69,8 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
           {% endif %}
+
+          
           
           
         </ul>
@@ -55,11 +80,6 @@
 
     <div class="container-fluid">
         
-        {% if user.is_authenticated %}
-
-        {% else %}
-
-        {% endif %}
 
         {% block content %}
 
@@ -69,10 +89,12 @@
             <div class="jumbotron">
                 <h1>{{post.title}} </h1>
                 <hr><h4>: By {{post.author}}</h4><span>   Posted on: {{post.post_date}}</span><br>
+                <h4>User id:  {{post.author.id}}</h4>
+                Category : <a href="{% url 'categoryTwo' post.category %}"><h5>{{post.category}}</h5></a>
                 <h5><a href="{% url 'articaldetails' post.pk %}">Show Page</a></h5>
                 <p>{{post.body|slice:":200"}}</p>
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and user.id == post.author.id %}
                 <a href="{% url 'UpdateViewPost' post.pk %}"><button class="btn-primary">Edit</button></a>
               
                 {% endif %}

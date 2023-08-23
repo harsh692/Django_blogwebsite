@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+
+{%block content%}
+
+{% if category_posts %}
+
+<h1>Posts with Category : {{cats}}</h1>
+
+{% for post in category_posts %}
+            <div class="jumbotron">
+                <h1>{{post.title}} </h1>
+                <hr><h4>: By {{post.author}}</h4><span>   Posted on: {{post.post_date}}</span><br>
+                <h5>Category : {{post.category}}</h5>
+                <h5><a href="{% url 'articaldetails' post.pk %}">Show Page</a></h5>
+                <p>{{post.body|slice:":200"}}</p>
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'UpdateViewPost' post.pk %}"><button class="btn-primary">Edit</button></a>
+              
+                {% endif %}
+              </div>
+                
+
+            {% endfor %}
+
+            {%else%}
+
+            <div class="container"><h1>Error 404</h1></div>
+{%endif%}
+
+{%endblock%}

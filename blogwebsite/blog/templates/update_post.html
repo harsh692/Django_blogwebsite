@@ -6,9 +6,11 @@ Updating post
 
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated%}
 
 <h1>Update Post</h1>
+
+{% if user.id == post.author.id %}
 
 <div class="jumbotron">
     <form method="POST">
@@ -18,6 +20,11 @@ Updating post
         <button class="btn-primary">Post</button>
     </form>
 </div>
+
+{% else %}
+<h1>You are not allowed here and you know it!</h1>
+
+{%endif%}
 
 {% else %}
 <h1>You are not allowed here and you know it!</h1>
