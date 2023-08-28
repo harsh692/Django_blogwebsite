@@ -1,19 +1,19 @@
 {% extends 'home.html' %}
 
 {% block title %}
-Register
+Edit Profile
 {{post.title_tag}}
 {% endblock %}
 
 {% block content %}
-<h1>Register</h1>
+<h1>Edit Profile</h1>
 
 <div class="jumbotron">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <hr>
-        <button class="btn-primary">Register</button>
+        <button class="btn-primary">Edit</button>
     </form>
 </div>
 

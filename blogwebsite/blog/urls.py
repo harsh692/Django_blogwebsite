@@ -14,4 +14,5 @@ urlpatterns = [
 
     path('artical/ViewCategory/<str:cats>',CategoryViewTwo,name='categoryTwo'),
     path('artical/categories_page',CategoryPageView,name='categoryPage'),
+    # path('like/<int:pk>',LikeView,name='like_post'),
 ]

@@ -15,7 +15,8 @@ Updating post
 <div class="jumbotron">
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.media }}
+        {{ form.as_p }}
         <hr>
         <button class="btn-primary">Post</button>
     </form>

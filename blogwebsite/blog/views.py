@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView ## class based views
 ## Using class views is helping us.
 from .models import Post, Category
 from .forms import ArticalPostForm, EditPostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 
 ## CLASS BASED VIEWS
@@ -71,3 +72,10 @@ def CategoryViewTwo(request,cats):
 def CategoryPageView(request):
     categories = Category.objects.all()
     return render(request,'categoryPage.html',{'categories':categories})
+
+# def LikeView(request,pk):
+#     post = get_object_or_404(Post, id = request.POST.get('post_id'))
+#     post.likes.add(request.user)
+#     return HttpResponseRedirect(reverse('articaldetails'),args=[str(pk)])
+
+
