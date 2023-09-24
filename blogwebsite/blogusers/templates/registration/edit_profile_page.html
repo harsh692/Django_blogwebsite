@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+
+{% block title %}
+Edit Profile page
+{{post.title_tag}}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+
+    <h1>Edit Profile Page</h1>
+
+    <div class="jumbotron">
+        <form method="POST" enctype="multipart/form-data"> 
+            <!-- enctype is for uploading images -->
+            {% csrf_token %}
+            <!-- because of the editor we are adding above. -->
+            {{ form.as_p }}
+            <hr>
+            <button class="btn-primary">Update Profile page</button>
+        </form>
+    </div>
+
+    {% else %}
+    <h1>You are not allowed here and you know it.</h1>
+      {% endif %} 
+<!-- javascript code to put the value in frontend directly since our form was getting executed from backend and there we cannot get user.id.  -->
+
+{% else %}
+<h1>You are not allowed here and you know it.</h1>
+{% endif %}
+
+{%endblock%}
+

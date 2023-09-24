@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Post, Category,Comment
 
 ## Hard coding categories
 # choices = [('sports','sports'),('entertainment','entertainment'),('coding','coding')]
@@ -16,7 +16,7 @@ for c in choices:
 class ArticalPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','title_tag','author','category','body','snippet')
+        fields = ('title','title_tag','author','category','body','snippet','header_image')
         widgets = {
             'title' : forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Title of the article'}),
             'title_tag'  : forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Sub-title'}),
@@ -39,5 +39,14 @@ class EditPostForm(forms.ModelForm):
             'body'  : forms.Textarea(attrs={'class': 'form-control', 'placeholder' : 'Main content'}),
             'category' : forms.Select(choices=choice_list,attrs={'class':'form-control'}),
             'snippet' : forms.TextInput(attrs={'class':'form-control','placeholder':'Enter your home page snippet here'}),
+            }
+        
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name','body')
+        widgets = {
+            'name' : forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Title of the article'}),
+            'body'  : forms.Textarea(attrs={'class': 'form-control', 'placeholder' : 'Main content'}),
             }
         

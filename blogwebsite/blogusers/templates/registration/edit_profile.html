@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load static %}
 
 {% block title %}
 Edit Profile
@@ -7,14 +8,20 @@ Edit Profile
 
 {% block content %}
 <h1>Edit Profile</h1>
+<br>
 
-<div class="jumbotron">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <hr>
-        <button class="btn-primary">Edit</button>
-    </form>
+{{user.profile.bio}}
+
+<br>
+<div class="d-flex justify-content-center align-content-center ">
+    <div class="jumbotron">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <hr>
+            <button class="btn-primary">Edit</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

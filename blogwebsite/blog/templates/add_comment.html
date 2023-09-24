@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+
+{% block title %}
+Comment on Blog 
+{{post.title_tag}}
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Comment</h1>
+
+<div class="jumbotron">
+    <form method="POST"> 
+        <!-- enctype is for uploading images -->
+        {% csrf_token %} 
+        <!-- because of the editor we are adding above. -->
+        {{ form.as_p }}
+        <hr>
+        <button class="btn-primary">Add Comment</button>
+    </form>
+</div>
+<!-- javascript code to put the value in frontend directly since our form was getting executed from backend and there we cannot get user.id.  -->
+
+
+{%endblock%}
+

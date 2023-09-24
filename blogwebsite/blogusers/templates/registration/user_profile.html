@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}
+User Profile
+{{post.title_tag}}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-content-center flex-wrap flex-column ">
+    <h1>User Profile</h1>
+
+        {{profile_user}}
+
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+            <div class="row g-4 ">
+                {% if profile_user.profile_pic.url %}
+                    <img src="{{ profile_user.profile_pic.url }}" class="img-thumbnail rounded" alt="">
+                {% else %}
+                    <img src="{% static 'blog/images/default_pic.jpg'%}" class="img-fluid rounded-start" alt="">
+                {% endif %}
+            </div>
+            <div class="row ">
+                <div class="card-body">
+                <h5 class="card-title">{{profile_user.user}}</h5>
+                <p class="card-text">{{profile_user.bio}}</p>
+                <p class="small text-muted">
+
+                    
+                    
+                    {% if profile_user.website_url%}
+                        <a href="{{profile_user.website_url}}">Website | </a>
+                    {% endif %}
+
+                    {% if profile_user.facebook_url%}
+                        <a href="{{profile_user.facebook_url}}">facebook | </a>
+                    {% endif %}
+
+                    {% if profile_user.twitter_url%}
+                        <a href="{{profile_user.twitter_url}}">twitter | </a>    
+                    {% endif %}
+
+                    {% if profile_user.instagram_url%}
+                        <a href="{{profile_user.instagram_url}}">instagram | </a>
+                    {% endif %}
+
+                    {% if profile_user.pintrest_url %}
+                        <a href="{{profile_user.pintrest_url}}">pinterest | </a>
+                    {% endif %}
+                    
+                </p>
+                <p class="card-text"><small class="text-body-secondary"></small></p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+{% endblock %}

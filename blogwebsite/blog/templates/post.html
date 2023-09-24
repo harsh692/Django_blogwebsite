@@ -11,7 +11,8 @@ Add Post
 <h1>Create posts</h1>
 
 <div class="jumbotron">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data"> 
+        <!-- enctype is for uploading images -->
         {% csrf_token %}
         {{ form.media }} 
         <!-- because of the editor we are adding above. -->
